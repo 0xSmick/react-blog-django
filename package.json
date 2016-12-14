@@ -1,0 +1,14 @@
+{
+  "name": "reactblog",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "sheldon",
+  "license": "ISC",
+  "dependencies": {
+    "webpack-bundle-tracker": "^0.1.0"
+  }
+}
