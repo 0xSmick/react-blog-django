@@ -3,31 +3,31 @@ var webpack = require('webpack')
 var BundleTracker = require('webpack-bundle-tracker')
 
 module.exports = {
-	context: __dirname,
-
-	entry: './assets/js/index',
-
-	output : {
-			path: path.resolve('./assets/bundles/'),
-			filename: "[name]-[hash].js",
-	},
-
+  entry: [
+    './assets/src/index.js'
+  ],
+  output: {
+    path: path.resolve('./assets/src/bundles/'),
+    filename:"[name]-[hash].js", 
+  },
 
 	plugins: [
 		new BundleTracker({filename: './webpack-stats.json'}),
 	],
-
-
-	module: {
-		loaders: [
-			{ test: /\.jsx?$/, exclude: /node_modules/, loader: 'babel-loader' },
-
-		],
-	},
-
-	resolve: {
-
-		modulesDirectories: ['node_modules', 'bower_components'],
-		extensions: ['','.js','.jsx']
-	},
-}
+  module: {
+    loaders: [{
+      exclude: /node_modules/,
+      loader: 'babel',
+      query: {
+        presets: ['react', 'es2015', 'stage-1']
+      }
+    }]
+  },
+  resolve: {
+    extensions: ['', '.js', '.jsx']
+  },
+  devServer: {
+    historyApiFallback: true,
+    contentBase: './'
+  }
+};
