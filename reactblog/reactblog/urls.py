@@ -13,9 +13,16 @@ Including another URLconf
     1. Import the include() function: from django.conf.urls import url, include
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
-from django.conf.urls import url
+from django.conf.urls import include, url
 from django.contrib import admin
+from django.conf import settings
+from rest_framework.schemas import get_schema_view
+
+schema_view = get_schema_view(title='Books API')
+
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
+    url('', include('books.urls')),
+    url('api/', include('auth.urls'))
 ]
